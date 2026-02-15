@@ -1,2 +1,13 @@
 @import "tailwindcss";
 
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Стили для темной темы, когда есть класс dark */
+.dark body {
+  background-color: #1a1a1a;
+  color: white;
+}
+

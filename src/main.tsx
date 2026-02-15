@@ -7,16 +7,45 @@ import { RouterProvider } from 'react-router-dom';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import { Layout } from './layouts/Menu/Layout';
-import Menu from './pages/Menu/Menu';
+import MenuPage from './pages/MenuPage/MenuPage';
 import { Error as ErrorPage } from './pages/Error/Error';
+import { ThemeProvider } from './components/ThemProvider/ThemProvider';
+import { SidebarProvider } from './components/SidebarContext/SidebarContext';
+import AddPost from './pages/AddPost/AddPost';
+import MyPosts from './pages/MyPosts/MyPosts';
+import OtherUsersPosts from './pages/OtherUsersPosts/OtherUsersPosts';
+import UserPost from './pages/UserPost/UserPost';
+import EditPost from './pages/EditPost/EditPost'; // Добавляем импорт EditPost
+import { RequireAuth } from './helpers/Require';
+
 const router = createHashRouter([
   {
     path: '/',
-    element: <Layout/>,
+    element: <RequireAuth><Layout/></RequireAuth>,
     children: [
       {
         path: '/',
-        element:  <Suspense fallback={<>Загрузка</>}><Menu/></Suspense>
+        element:  <Suspense fallback={<>Загрузка</>}><MenuPage/></Suspense>
+      },
+      {
+        path: '/add-post',
+        element: <AddPost/>
+      },
+      {
+        path: '/myPosts',
+        element: <MyPosts/>,
+      },
+      {
+        path: '/posts',
+        element: <OtherUsersPosts/>
+      },
+      {
+        path: '/post/:postId',
+        element: <UserPost/>
+      },
+      {
+        path: '/edit-post/:postId',
+        element: <EditPost/> // Меняем UserPost на EditPost
       }
     ]
   },
@@ -40,23 +69,12 @@ const router = createHashRouter([
   }
 ]);
 
-
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <ThemeProvider>
+      <SidebarProvider>
+        <RouterProvider router={router}/>
+      </SidebarProvider>
+    </ThemeProvider>
   </React.StrictMode>,
 )
-
-
-     /*   return defer({
-            data:  axios.get(`${PREFIX}/products/${params.id}`).then(data => data)
-          });
- */
-         /*  await new Promise<void>((resolve) => {
-            setTimeout(() => {
-              resolve();
-            }, 2000);
-          });
-          const {data} = await axios.get(`${PREFIX}/products/${params.id}`);
-          return data; */

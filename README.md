@@ -72,3 +72,4 @@ export default defineConfig([
 ])
 ```
 # asmo-first-project-fronted-
+# mini-social-network-fronted

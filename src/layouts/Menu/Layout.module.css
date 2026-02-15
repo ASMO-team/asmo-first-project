@@ -2,27 +2,26 @@
     display: grid;
     min-height: 100vh;
     grid-template-columns: 
-        minmax(0, 10px)    /* Почти нет отступов */
-        minmax(500px, 1fr) /* Максимально широкие центральные колонки */
-        minmax(500px, 1fr) /* Максимально широкие центральные колонки */
-        minmax(0, 10px);   /* Почти нет отступов */
+        auto                 /* Sidebar занимает свою естественную ширину */
+        minmax(500px, 1fr)   /* Основной контент */
+        minmax(0, 10px);     /* Правый отступ */
     grid-template-rows: auto 1fr;
     grid-template-areas: 
-        '. sidebar header .'
-        '. sidebar content .';
-    gap:  20px 24px; /* Больше пространства между колонками */
+        "sidebar header ."
+        "sidebar content .";
+    gap: 20px 24px;
+    transition: grid-template-columns 0.3s ease; /* Плавное изменение grid */
 }
 
-.header {
-    grid-area: header;
- 
-    
-}
-
- 
 .sidebar {
     grid-area: sidebar;
     min-height: 100%;
+    /* Ширина теперь управляется через React компонент */
+}
+
+/* Остальные стили остаются прежними */
+.header {
+    grid-area: header;
 }
 
 .content {

@@ -5,7 +5,7 @@ import authImage from "../../assets/authFont.svg";
 export function AuthLayout() {
   return (
     <div className="flex h-screen">
-        <div className="flex-1 flex justify-center items-start mt-[10%]">
+        <div className="flex-1 flex justify-center items-center">
           <Outlet/>
         </div>
         <div className="flex-1 overflow-y-hidden relative">

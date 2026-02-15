@@ -15,7 +15,7 @@ import AddPost from './pages/AddPost/AddPost';
 import MyPosts from './pages/MyPosts/MyPosts';
 import OtherUsersPosts from './pages/OtherUsersPosts/OtherUsersPosts';
 import UserPost from './pages/UserPost/UserPost';
-import EditPost from './pages/EditPost/EditPost'; // Добавляем импорт EditPost
+import EditPost from './pages/EditPost/EditPost';  
 import { RequireAuth } from './helpers/Require';
 
 const router = createHashRouter([
@@ -45,7 +45,7 @@ const router = createHashRouter([
       },
       {
         path: '/edit-post/:postId',
-        element: <EditPost/> // Меняем UserPost на EditPost
+        element: <EditPost/>  
       }
     ]
   },
